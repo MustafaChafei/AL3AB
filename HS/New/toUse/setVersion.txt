@@ -1,0 +1,52 @@
+if Input.is_action_just_pressed("ui_interact"):
+		if facing_direction == FacingDirection.UP:
+			interact(FacingDirection.UP)
+		elif facing_direction == FacingDirection.DOWN:
+			interact(FacingDirection.DOWN)
+		elif facing_direction == FacingDirection.LEFT:
+			interact(FacingDirection.LEFT)
+		elif facing_direction == FacingDirection.RIGHT:
+			interact(FacingDirection.RIGHT)
+	
+func interact(result):
+	for dictionary in result:
+		if typeof(dictionary.collider) == TYPE_OBJECT and dictionary.collider.has_node("Interact"):
+			get_node("Camera2D/Node2D/Dialogue Box").set_hidden(false)
+			get_node("Camera2D/Node2D/Dialogue Box")._print_dialogue("Hallo Student\nHier findest du Infos zu deinem Studiengang")
+
+
+
+
+
+
+extends NinePatchRect
+
+var printing = false
+var timer = 0
+var textToPrint = ""
+
+var currentChar = 0
+
+const SPEED = 0.1
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	_fixed_process(true)
+
+func _fixed_process(delta):
+	if printing:
+		timer +=delta
+		if timer > SPEED:
+			timer = 0
+			get_node("RichTextLabel").set_bbcode(get_node("RichTextLabel").get_bbcode() + textToPrint[currentChar])
+			currentChar +=1
+			
+		if currentChar >= textToPrint.length():
+			currentChar = 0
+			textToPrint = ""
+			printing= false
+			timer = 0
+			
+func _print_dialogue(text):
+	printing = true
+	textToPrint = text

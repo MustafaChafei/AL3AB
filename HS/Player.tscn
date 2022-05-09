@@ -1,7 +1,8 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://Assets/Player/Male_Spritesheet.png" type="Texture" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
+[ext_resource path="res://dialogueScene.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
@@ -128,6 +129,36 @@ transitions = [ "Idle", "Walk", SubResource( 23 ), "Walk", "Idle", SubResource( 
 start_node = "Idle"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=26]
+
+[sub_resource type="Animation" id=55]
+resource_name = "Disappear"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "entered_door"
+} ]
+}
 
 [sub_resource type="Animation" id=27]
 resource_name = "IdleDown"
@@ -493,7 +524,7 @@ offset = Vector2( 0, -4 )
 flip_h = true
 hframes = 3
 vframes = 3
-frame = 6
+frame = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 8, 8 )
@@ -509,6 +540,7 @@ parameters/Walk/blend_position = Vector2( 0.00211859, 0.995708 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 reset_on_save = false
+anims/Disappear = SubResource( 55 )
 anims/IdleDown = SubResource( 27 )
 anims/IdleLeft = SubResource( 40 )
 anims/IdleRight = SubResource( 29 )
@@ -525,7 +557,10 @@ anims/WalkUp = SubResource( 35 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 1.4, 1.4 )
+
+[node name="Node2D" parent="Camera2D" instance=ExtResource( 4 )]
+visible = false
+position = Vector2( -50, 70 )
 
 [node name="BlockingRayCast2D" type="RayCast2D" parent="."]
 position = Vector2( 8, 8 )
@@ -536,3 +571,10 @@ collision_mask = 6
 position = Vector2( 8, 8 )
 cast_to = Vector2( 0, 8 )
 collision_mask = 4
+
+[node name="DoorRayCast2D" type="RayCast2D" parent="."]
+position = Vector2( 8, 8 )
+cast_to = Vector2( 0, 8 )
+collision_mask = 8
+collide_with_areas = true
+collide_with_bodies = false

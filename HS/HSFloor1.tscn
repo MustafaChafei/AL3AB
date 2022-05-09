@@ -1,0 +1,90 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Interior.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Door.tscn" type="PackedScene" id=3]
+[ext_resource path="res://New/toUse/matte.png" type="Texture" id=4]
+[ext_resource path="res://New/toUse/infopoint.png" type="Texture" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 24.5, 552 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 285, 32.75 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 231.375, 32.75 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 182.125, 32.75 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 25, 12.5 )
+
+[node name="HSFloor1" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -302.0
+margin_top = -1342.0
+margin_right = 898.0
+margin_bottom = 658.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( -165, -187 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 449, -165 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 144, -717 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 422.375, 398 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( -7.125, 398 )
+shape = SubResource( 3 )
+
+[node name="infoPointcoll" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 279, 255 )
+scale = Vector2( 1, 1 )
+shape = SubResource( 5 )
+
+[node name="Interior" parent="." instance=ExtResource( 2 )]
+
+[node name="Matte" type="TextureRect" parent="."]
+margin_left = 145.0
+margin_top = 251.0
+margin_right = 221.0
+margin_bottom = 367.0
+texture = ExtResource( 4 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Infopoint2" type="Sprite" parent="YSort"]
+position = Vector2( 279, 255 )
+scale = Vector2( 0.426724, 0.398648 )
+texture = ExtResource( 5 )
+
+[node name="Player" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 270, 270 )
+scale = Vector2( 1, 1 )
+
+[node name="Door" parent="." instance=ExtResource( 3 )]
+modulate = Color( 0.784314, 0.109804, 0.109804, 1 )
+position = Vector2( 175, 368 )
+scale = Vector2( 1, 1 )
+next_scene_path = "res://Map.tscn"
