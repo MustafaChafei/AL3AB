@@ -1,0 +1,41 @@
+{
+	"events": [
+		{
+			"character": "character-1652174761.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Hallo Student, Hier findest du Infos zu deinem Studiengang."
+		},
+		{
+			"character": "character-1652174761.json",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "",
+			"question": "Was studierst du?"
+		},
+		{
+			"choice": "Informatik",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"choice": "Andere",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"event_id": "dialogic_013"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.2 - Dev",
+		"file": "timeline-1652174792.json",
+		"name": "timeline-1"
+	}
+}
