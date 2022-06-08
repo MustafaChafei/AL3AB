@@ -20,9 +20,13 @@ func _on_NPC_body_exited(body):
 func _input(event):
 	if get_node_or_null('DialogNode') == null:
 		if event.is_action_pressed("ui_accept") and active:
-			get_tree().paused = true
-			var dialog = Dialogic.start('timeline-1')
+			var dialog = Dialogic.start('infopoint')
 			dialog.pause_mode = Node.PAUSE_MODE_PROCESS
-			dialog.connect('timeline_end', self, 'unpause')
+			#Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			add_child(dialog)
-			
+			dialog.connect('timeline_end', self, 'unpause')
+			get_tree().paused = true
+				
+func unpause(data):
+	get_tree().paused = false
+	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

@@ -1,0 +1,80 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/EXP-System-Dialog/Resource_BakedStory/EXP_BakedStory.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+TYPE = "EXP_Baked_Story"
+story = {
+1: {
+"nodes": {
+1: {
+"links": {
+0: 2
+},
+"text": "<speaker>koehn</speaker>
+<dialog>Was Geht?</dialog>"
+},
+2: {
+"links": {
+0: 3
+},
+"text": "<speaker>Spieler</speaker>
+<dialog>Was Geht!</dialog>"
+},
+3: {
+"links": {
+0: 4,
+1: 5,
+2: 6,
+3: 7
+},
+"text": "<speaker>koehn</speaker>
+<dialog>Wie hießt du als du geheißen hast?!</dialog>
+<choiceJSON>{\"Aha\" :0, \"Mustafa\":1, \"Ahmet\":2, \"yazalame\":3}</choiceJSON>"
+},
+4: {
+"links": {
+0: 9
+},
+"text": "<speaker>koehn</speaker>
+<dialog>Nein bro!</dialog>"
+},
+5: {
+"links": {
+0: 9
+},
+"text": "<speaker>koehn</speaker>
+<dialog>Eova</dialog>"
+},
+6: {
+"links": {
+0: 9
+},
+"text": "<speaker>koehn</speaker>
+<dialog>korrekt, aber falsch!</dialog>"
+},
+7: {
+"links": {
+0: 9
+},
+"text": "<speaker>koehn</speaker>
+<dialog>us ukhtu!</dialog>"
+},
+8: {
+"links": {
+0: 1
+},
+"text": "<start>"
+},
+9: {
+"links": {
+},
+"text": "<end>"
+}
+}
+}
+}
+names = {
+"Aufgaben": 1
+}

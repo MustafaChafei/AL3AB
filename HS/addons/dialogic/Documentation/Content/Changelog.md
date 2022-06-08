@@ -1,6 +1,6 @@
 # Changelog
 
-## v1.4.2 - WIP
+## v1.4.2 - Afterlife
 - Fixed an issue with MacOS and text events not adjusting their size properly
 - Android exports should work again [[zaknafean](https://github.com/zaknafean)]
 - Add setting to disable the mouse block of the dialog node [[Jowan-Spooner](https://github.com/Jowan-Spooner)]
@@ -10,6 +10,13 @@
   - Changed the default status of autofocus from true to false
 - A basic touch to advance implementation (#876) [[zaknafean](https://github.com/zaknafean)]
 - Added support for 9-patch rectangles for Dialog Box textures (#286) [[zaknafean](https://github.com/zaknafean)]
+- Added finer controls to Text and Box positions (#761) [[lamsorsen](https://github.com/lamsorsen)]
+  - **Box margin** replaced with **Margin** for the DialogBox settings
+  - **Box Padding** has been removed from the DialogBox settings, and replaced with **Margin**  for the Dialog Text setting to clear up confusion
+  - The margin Top/Bottom and Left/Right are no longer linked, and can be individually adjusted
+  - **Please note this change may break some existing themes**
+- Added option to recenter character portraits automatically [[thebardsrc](https://github.com/thebardsrc)]
+
 
 ## v1.4.1 - Animations hotfix
 - Portrait-Animation fixes:
@@ -34,6 +41,7 @@
   - Removed the setting to dim character portraits from the global settings
   - Added a setting to control the dim speed [[thebardsrc](https://github.com/thebardsrc)]
 - You can now set a `custom theme per character` [[Jowan-Spooner](https://github.com/Jowan-Spooner)]
+- Added a setting for behavior to re-center the portrait each time it's changed from a text event. This fixes a number of portrait issues and is enabled by default, but is a BREAKING change, so please remember to disable this if you need the old behavior. [[thebardsrc](https://github.com/thebardsrc)]
 - New setting to use "Keep Aspect Centered" instead of stretch for the Background event [[Jowan-Spooner](https://github.com/Jowan-Spooner)]
 - You can now vertically align the text in the dialog box [[Jowan-Spooner](https://github.com/Jowan-Spooner)]
 - You can now specify hotkeys for the choices or use default hot-keys (1-9) [[zaknafean](https://github.com/zaknafean)]

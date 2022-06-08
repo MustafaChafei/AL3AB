@@ -1,14 +1,13 @@
 extends Node2D
 
 var next_scene = null
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+
+onready var background = $root/SceneManager/CurrentScene/Combat/CanvasLayer/combat_scene/background
+#onready var bg = $CurrentScene/Combat/CanvasLayer/combat_scene/background
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass 
 
 func transition_to_scene(new_scene: String):
 	next_scene = new_scene
@@ -16,5 +15,13 @@ func transition_to_scene(new_scene: String):
 
 func finished_fading():
 	$CurrentScene.get_child(0).queue_free()
-	$CurrentScene.add_child(load(next_scene).instance())
+	$CurrentScene.get_child(1).queue_free()
+	print(next_scene)
+	#print(bg)
+	var try = $CurrentScene.add_child(load(next_scene).instance())
 	$ScreenTransition/AnimationPlayer.play("FadeToNormal")
+	if(next_scene == "res://Combat.tscn"):
+		var bg = get_node(NodePath("/root/SceneManager/CurrentScene/Combat/CanvasLayer/combat_scene/background"))
+		print(bg)
+		print(bg.is_visible())
+		bg.visible = true
